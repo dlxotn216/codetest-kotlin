@@ -13,12 +13,12 @@ import org.junit.jupiter.params.provider.MethodSource
 class TestClass {
     @ParameterizedTest
     @MethodSource("input")
-    fun `test`(input: Int) {
+    fun test(input: Int) {
         println(getMaxDistance(input))
     }
 
     private fun getMaxDistance(input: Int): Int {
-        val digitResult = getDigits(input)
+        val digitResult = getBinaryNumber(input)
 
         if (digitResult.oneCount <= 1 || digitResult.zeroCount == 0) {
             return 0
@@ -40,7 +40,7 @@ class TestClass {
         return maxDistance
     }
 
-    private fun getDigits(input: Int): DigitResult {
+    private fun getBinaryNumber(input: Int): BinaryNumber {
         var number = input
 
         var zeroCount = 0
@@ -57,7 +57,7 @@ class TestClass {
             number /= 2
         }
 
-        return DigitResult(digits, zeroCount, oneCount)
+        return BinaryNumber(digits, zeroCount, oneCount)
     }
 
     companion object {
@@ -68,7 +68,11 @@ class TestClass {
 
 }
 
-class DigitResult(
+class BinaryNumber(
+    /**
+     * 역순으로 계산된 이진수
+     * 19 = reversedDigits[1 1 0 0 1]
+     */
     val reversedDigits: ArrayList<Int>,
     val zeroCount: Int,
     val oneCount: Int,
