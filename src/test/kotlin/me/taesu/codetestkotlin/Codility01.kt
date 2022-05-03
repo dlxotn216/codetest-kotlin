@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource
  * @version ConsentV3 v1.0 wB202203
  * @since ConsentV3 v1.0 wB202203
  */
-class TestClass {
+class Codility01 {
     @ParameterizedTest
     @MethodSource("input")
     fun test(input: Int) {
